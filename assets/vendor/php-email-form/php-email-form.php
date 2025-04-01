@@ -1,11 +1,4 @@
 <?php
-/**
- * PHP Email Form
- * Version: 3.7
- * Website: https://bootstrapmade.com/php-email-form/
- * Copyright: BootstrapMade.com
- */
-
 if ( version_compare(phpversion(), '5.5.0', '<') ) {
   die('PHP version 5.5.0 and up is required. Your PHP version is ' . phpversion());
 }
@@ -122,7 +115,7 @@ class PHP_Email_Form {
     $to = filter_var( $this->to, FILTER_VALIDATE_EMAIL);
     $from_name = $this->from_name;
     $from_email = filter_var( $this->from_email, FILTER_VALIDATE_EMAIL);
-    $subject = $this->subject;
+    // $subject = $this->subject;
     $message = nl2br($this->message);
 
     if( ! $to || md5($to) == '496c0741682ce4dc7c7f73ca4fe8dc5e') 
@@ -134,8 +127,8 @@ class PHP_Email_Form {
     if( ! $from_email ) 
       $this->error .= $this->error_msg['invalid_from_email'] . '<br>';
 
-    if( ! $subject ) 
-      $this->error .= $this->error_msg['invalid_subject'] . '<br>';
+    // if( ! $subject ) 
+    //   $this->error .= $this->error_msg['invalid_subject'] . '<br>';
 
     if( is_array( $this->smtp) ) {
       if( !isset( $this->smtp['host'] ) )
@@ -206,7 +199,7 @@ class PHP_Email_Form {
 
       // Content
       $mail->isHTML(true);
-      $mail->Subject = $subject;
+    //   $mail->Subject = $subject;
       $mail->Body = $message;
 
       // Options
@@ -1088,7 +1081,7 @@ class PHPMailer
      *
      * @return bool
      */
-    private function mailPassthru($to, $subject, $body, $header, $params)
+    private function mailPassthru($to, $body, $header, $params)
     {
         //Check overloading of mail function to avoid double-encoding
         if ((int)ini_get('mbstring.func_overload') & 1) {

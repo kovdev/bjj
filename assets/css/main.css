@@ -2769,7 +2769,6 @@ section {
 }
 .google-maps {
   position: relative;
-  padding-bottom: 75%;
   overflow: hidden;
 }
 .google-maps iframe {
@@ -2781,4 +2780,9 @@ section {
 }
 .mobile-nav-toggle {
   color: var(--color-primary) !important;
+}
+@media screen and (max-width: 768px) {
+  .google-maps {
+    padding-bottom: 0;
+  }
 }
