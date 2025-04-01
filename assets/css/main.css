@@ -341,7 +341,7 @@ section {
     font-weight: 500;
     color: rgb(0, 0, 0);
     /* f02c0a text shadow */
-    text-shadow: 0 0 3px #f02c0a;
+    text-shadow: 0 0 12px white;
     text-transform: uppercase;
     white-space: nowrap;
     transition: 0.3s;

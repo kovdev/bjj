@@ -178,9 +178,11 @@
                       class="form-control"
                       name="email"
                       id="email"
+                      onblur="validateEmail()"
                       placeholder="Your Email"
                       required
                     />
+                    <small class="text-danger" id="email-error" style="display: none;">Please enter a valid email address</small>
                   </div>
                 </div>
 
@@ -201,7 +203,7 @@
                   </div>
                 </div>
                 <div class="text-center">
-                  <button type="submit">Send Message</button>
+                  <button id="submitBtn" type="submit">Send Message</button>
                 </div>
               </form>
             </div>
@@ -278,3 +280,21 @@
     <script src="assets/js/main.js"></script>
   </body>
 </html>
+<script>
+  function validateEmail(){
+    const email = document.getElementById('email').value;
+    const emailError = document.getElementById('email-error');
+    const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+    const submitBtn = document.getElementById('submitBtn');
+
+    if(email.match(emailPattern)){
+      emailError.style.display = 'none';
+      submitBtn.disabled = false;
+      submitBtn.style.cursor = 'pointer';
+    }else{
+      emailError.style.display = 'block';
+      submitBtn.disabled = true;
+      submitBtn.style.cursor = 'not-allowed';
+    }
+  }
+</script>
